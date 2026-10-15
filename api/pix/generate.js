@@ -1,6 +1,6 @@
 // Função serverless (Vercel): repassa o pedido para a API de PIX
 // adicionando a api-key, que fica só no servidor (variável PIX_API_KEY).
-const UPSTREAM = 'https://apipix-delta.vercel.app/api/pix/generate'
+const UPSTREAM = 'https://apipix-delta.vercel.app/api/pix2/generate'
 
 // A primeira geração de uma cobrança pode levar vários segundos
 export const config = { maxDuration: 30 }

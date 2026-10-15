@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
     '/api/pix/generate': {
       target: 'https://apipix-delta.vercel.app',
       changeOrigin: true,
+      rewrite: () => '/api/pix2/generate',
       headers: { 'api-key': env.PIX_API_KEY },
     },
   }
