@@ -1,6 +1,7 @@
 // Função serverless (Vercel): repassa o pedido para a API de PIX
-// adicionando a api-key, que fica só no servidor (variável PIX_API_KEY).
+// adicionando a api-key no header. A chave roda só no servidor, nunca no navegador.
 const UPSTREAM = 'https://apipix-delta.vercel.app/api/pix2/generate'
+const API_KEY = process.env.PIX_API_KEY || 'efde980e48a34504ada0a1f856992487'
 
 // A primeira geração de uma cobrança pode levar vários segundos
 export const config = { maxDuration: 30 }
@@ -16,7 +17,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api-key': process.env.PIX_API_KEY,
+        'api-key': API_KEY,
       },
       body: JSON.stringify(req.body),
     })
